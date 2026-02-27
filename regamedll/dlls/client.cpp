@@ -3484,7 +3484,7 @@ void EXT_FUNC InternalCommand(edict_t *pEntity, const char *pcmd, const char *pa
 				// player is dropping an item.
 				if (pPlayer->HasShield())
 				{
-					if (pPlayer->m_pActiveItem && pPlayer->m_pActiveItem->m_iId == WEAPON_C4)
+					if (!FNullEnt(pPlayer->m_pActiveItem) && pPlayer->m_pActiveItem->m_iId == WEAPON_C4)
 					{
 						pPlayer->DropPlayerItem("weapon_c4");
 					}
@@ -5070,7 +5070,7 @@ void EXT_FUNC UpdateClientData(const edict_t *ent, int sendweapons, struct clien
 			cd->iuser3 = iUser3;
 		}
 
-		if (pPlayer->m_pActiveItem)
+		if (!FNullEnt(pPlayer->m_pActiveItem))
 		{
 			ItemInfo II;
 			Q_memset(&II, 0, sizeof(II));

@@ -75,7 +75,7 @@ void CHalfLifeTraining::PlayerThink(CBasePlayer *pPlayer)
 	pPlayer->m_bCanShoot = true;
 	pPlayer->m_fLastMovement = gpGlobals->time;
 
-	if (pPlayer->m_pActiveItem)
+	if (!FNullEnt(pPlayer->m_pActiveItem))
 		pPlayer->m_iHideHUD &= ~HIDEHUD_WEAPONS;
 	else
 		pPlayer->m_iHideHUD |= HIDEHUD_WEAPONS;

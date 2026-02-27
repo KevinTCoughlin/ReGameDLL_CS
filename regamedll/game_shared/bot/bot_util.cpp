@@ -652,7 +652,7 @@ bool IsGameEventAudible(GameEventType event, CBaseEntity *pEntity, CBaseEntity *
 	// TODO: Use actual volume, account for silencers, etc.
 	case EVENT_WEAPON_FIRED:
 	{
-		if (!pPlayer->m_pActiveItem)
+		if (FNullEnt(pPlayer->m_pActiveItem))
 			return false;
 
 		switch (pPlayer->m_pActiveItem->m_iId)

@@ -3277,7 +3277,7 @@ BOOL EXT_FUNC CHalfLifeMultiplay::__API_HOOK(FShouldSwitchWeapon)(CBasePlayer *p
 		return FALSE;
 	}
 
-	if (!pPlayer->m_pActiveItem)
+	if (FNullEnt(pPlayer->m_pActiveItem))
 	{
 		// player doesn't have an active item!
 		return TRUE;
@@ -3740,7 +3740,7 @@ void CHalfLifeMultiplay::PlayerThink(CBasePlayer *pPlayer)
 		pPlayer->m_bCanShoot = true;
 	}
 
-	if (pPlayer->m_pActiveItem && pPlayer->m_pActiveItem->IsWeapon())
+	if (!FNullEnt(pPlayer->m_pActiveItem) && pPlayer->m_pActiveItem->IsWeapon())
 	{
 		CBasePlayerWeapon *pWeapon = static_cast<CBasePlayerWeapon *>(pPlayer->m_pActiveItem->GetWeaponPtr());
 		if (pWeapon->m_iWeaponState & WPNSTATE_SHIELD_DRAWN
